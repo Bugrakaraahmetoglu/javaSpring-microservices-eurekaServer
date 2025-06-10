@@ -1,5 +1,6 @@
 package com.bugra.customer;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class CustomerController{
     private final CustomerService customerService;
 
     @PostMapping
-    public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
+    public void registerCustomer(@RequestBody @Valid CustomerRegistrationRequest customerRegistrationRequest) {
         log.info("Registering new customer {} ",customerRegistrationRequest);
         customerService.registerCustomer(customerRegistrationRequest);
     }
